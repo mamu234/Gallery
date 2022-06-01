@@ -9,5 +9,8 @@ def index(request):
 def about(request):
     return render(request, 'about.html')
 
+def category(request):
+    return render(request, 'category.html')
 
- 
+def location(request):
+    return render(request, 'location.html')
