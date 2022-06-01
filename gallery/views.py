@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Create your views here.
 
 def index(request):
@@ -7,3 +8,6 @@ def index(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+ 
