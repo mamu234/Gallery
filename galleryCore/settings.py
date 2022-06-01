@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gallery',
 ]
 
 MIDDLEWARE = [
@@ -76,9 +77,9 @@ WSGI_APPLICATION = 'galleryCore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'galleryCore',
+        'NAME': 'gallerycore',
         'USER': 'carolyne',
-        'PASSWORD': '123456',
+        'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': ''
     }
