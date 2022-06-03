@@ -1,13 +1,19 @@
 from django.shortcuts import render
-from .models import photos
+from .models import Photos
 
 # Create your views here.
 
 def index(request):
-    photo = photos.objects.all()
-  
+    photo = Photos.objects.all()
+   
+    
     ctx = {'photo':photo}
+    
+   
     return render(request, 'index.html', ctx)
+
+       
+    
    
 
 def about(request):
