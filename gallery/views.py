@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Photos
+from .models import Category, Photos
 
 # Create your views here.
 
@@ -21,3 +21,17 @@ def category(request):
 
 def location(request):
     return render(request, 'location.html')
+
+
+def search_results(request):
+
+    if 'category' in request.GET and request.GET["category"]:
+        search_term = request.GET.get("category")
+        searched_articles = Category.search_by_title(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"category": searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
