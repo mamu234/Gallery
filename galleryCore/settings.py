@@ -10,24 +10,50 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from importlib.resources import path
 from pathlib import Path
+from django.conf import settings
+from dotenv import load_dotenv
 import os
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+import django_heroku
+
+
+
+
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+env_path = Path('.')/ '.env'
+load_dotenv(dotenv_path=env_path)
+
+
+SECRET_KEY=os.getenv('django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9*')
+
+DEFAULT_FILES_STORAGE='Cloudinary.storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+cloudinary.config(
+  cloud_name = os.getenv('dgwsgoxjd'),
+  api_key=os.getenv('269319899829333'),
+  api_secret=os.getenv('Ge8SNu-60CxUS9Nefa68cwGVrlw'),
+
+)
+
+
+
+django_heroku.settings=(locals())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9*'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,11 +61,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
-cloudinary.config( 
-  cloud_name = "dgwsgoxjd", 
-  api_key = "269319899829333", 
-  api_secret = "Ge8SNu-60CxUS9Nefa68cwGVrlw" 
-)
+
+ 
+
 
 # Application definition
 
@@ -53,6 +77,8 @@ INSTALLED_APPS = [
     'gallery',
     "bootstrap4",
     'cloudinary',
+    'static',
+    'cryspy-forms',
 ]
 
 MIDDLEWARE = [
@@ -140,6 +166,8 @@ STATIC_URL ='static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_DIR=os.path.join(BASE_DIR,'static')
+
+CRISPY_TEMPLATES_PACK='boostrap4'
 
 STATICFILES_STORAGE='whitenoise.storage.compresedManifestStaticFilesStorage'
 
