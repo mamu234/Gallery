@@ -5,3 +5,5 @@ admin.site.register(Photos)
 admin.site.register(Category)
 admin.site.register(Location)
 
+
+
