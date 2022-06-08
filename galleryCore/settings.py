@@ -10,60 +10,38 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from importlib.resources import path
 from pathlib import Path
-from django.conf import settings
-from dotenv import load_dotenv
+from decouple import config
 import os
 import cloudinary
-import django_heroku
-
-
-
-
+import cloudinary.uploader
+import cloudinary.api
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-env_path = Path('.')/ '.env'
-load_dotenv(dotenv_path=env_path)
-
-
-SECRET_KEY=os.getenv('django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9*')
-
-DEFAULT_FILES_STORAGE='Cloudinary.storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-cloudinary.config(
-  cloud_name = os.getenv('dgwsgoxjd'),
-  api_key=os.getenv('269319899829333'),
-  api_secret=os.getenv('Ge8SNu-60CxUS9Nefa68cwGVrlw'),
-
-)
-
-
-
-django_heroku.settings=(locals())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
-
- 
-
+cloudinary.config( 
+  cloud_name = "dgwsgoxjd", 
+  api_key = "269319899829333", 
+  api_secret = "Ge8SNu-60CxUS9Nefa68cwGVrlw" 
+)
 
 # Application definition
 
@@ -77,8 +55,6 @@ INSTALLED_APPS = [
     'gallery',
     "bootstrap4",
     'cloudinary',
-    'static',
-    'cryspy-forms',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +72,7 @@ ROOT_URLCONF = 'galleryCore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,11 +95,10 @@ WSGI_APPLICATION = 'galleryCore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'gallerycore',
-        'USER': 'carolyne',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': ''
+        'NAME':config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        
     }
 }
 
@@ -152,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -162,17 +137,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL ='static/'
-STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
-
-STATIC_DIR=os.path.join(BASE_DIR,'static')
-
-CRISPY_TEMPLATES_PACK='boostrap4'
-
-STATICFILES_STORAGE='whitenoise.storage.compresedManifestStaticFilesStorage'
-
-
-# django_heroku.settings(locals())
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
