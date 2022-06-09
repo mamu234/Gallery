@@ -1,2 +1,2 @@
-web: gunicorn gallery:gallery
+web: gunicorn gallery
 
