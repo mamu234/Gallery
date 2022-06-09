@@ -1,7 +1,7 @@
-from django.test import TestCase
-
-# Create your tests here.
+from  tests import TestCase
 from .models import Category,Location
+# Create your tests here.
+
 
 
 class CategoryTestClass(TestCase):
