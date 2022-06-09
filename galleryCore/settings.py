@@ -30,7 +30,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY =('django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9*')
+SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -38,10 +38,12 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 cloudinary.config( 
-  cloud_name = "dgwsgoxjd", 
-  api_key = "269319899829333", 
-  api_secret = "Ge8SNu-60CxUS9Nefa68cwGVrlw" 
+    cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
+    api_key = os.getenv('CLOUDINARY_API_KEY'),
+    api_secret = os.getenv("CLOUDINARY_API_SECRET"),
+    secure = True
 )
+
 
 # Application definition
 
@@ -95,7 +97,7 @@ WSGI_APPLICATION = 'galleryCore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgressql.pycopg2',
         'NAME':('gallerycore'),
         'USER': ('carolyne'),
         'PASSWORD':('123'),
