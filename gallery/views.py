@@ -48,3 +48,12 @@ def delete_blog(request,blog_id):
         return redirect('gallery/index.html')
     blog_up.delete()
     return redirect('gallery/index.html')
+
+def about(request):
+    return render('about.html ')
+
+def catergory(request):
+    return render('category.html ')
+
+def location(request):
+    return render('location.html ')
