@@ -34,7 +34,7 @@ SECRET_KEY = ('django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['']
 
 
 cloudinary.config( 
@@ -75,7 +75,7 @@ ROOT_URLCONF = 'galleryCore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,8 +105,6 @@ DATABASES = {
     }
 }
 
-# DB_USER = 'carolyne'
-# DB_PASSWORD='123'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -143,12 +141,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+os.path.join(BASE_DIR, 'static'),
 )
 
 
