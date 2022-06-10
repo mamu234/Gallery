@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Category, Photos
+from .forms import CategoryCreate
+from django.http import HttpRequest, HttpResponse
 
 # Create your views here.
 
@@ -13,24 +15,36 @@ def index(request):
     return render(request, 'index.html', ctx)
 
        
-def about(request):
-    return render(request, 'about.html')
-
-def category(request):
-    return render(request, 'category.html')
-
-def location(request):
-    return render(request, 'location.html')
-
-def search_results(request):
-
-    if 'category' in request.GET and request.GET["category"]:
-        search_term = request.GET.get("category")
-        searched_categories = Category.search_by_title(search_term)
-        message = f"{search_term}"
-
-        return render(request, 'search.html',{"message":message,"categories": searched_categories})
-
+def upload(request):
+    upload=CategoryCreate()
+    if request.method=='POST':
+        upload=CategoryCreate(request.POST,request.FILES)
+        if upload.is_valid():
+            upload.save()
+            return redirect('index')
+        else:
+            return HttpResponse('Your form is wrong')
     else:
-        message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
+        return render(request,'gallery/upload_form.html',{'upload':upload})
+
+def update_blog(request,blog_id):
+    blog_id=int(blog_id)
+    try:
+     blog_up=Category.objects.get(id=blog_id)
+    except Category.DoesNotExist:
+        return redirect('index')
+    blog_form=CategoryCreate(request.POST or None,instance=blog_up)
+    if blog_form.is_valid():
+        blog_form.save()
+        return redirect('index')
+    return render (request,'gallery/upload_form.html',{'upload':blog_form})
+
+def delete_blog(request,blog_id):
+     
+    blog_id=int(blog_id)
+    try:
+        blog_up=Category.objects.get(id=blog_id)
+    except Category.DoesNotExist:
+        return redirect('gallery/index.html')
+    blog_up.delete()
+    return redirect('gallery/index.html')
