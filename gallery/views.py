@@ -27,7 +27,7 @@ def upload(request):
     else:
         return render(request,'gallery/upload_form.html',{'upload':upload})
 
-def update_blog(request,blog_id):
+def update(request,blog_id):
     blog_id=int(blog_id)
     try:
      blog_up=Category.objects.get(id=blog_id)
@@ -39,7 +39,7 @@ def update_blog(request,blog_id):
         return redirect('index')
     return render (request,'gallery/upload_form.html',{'upload':blog_form})
 
-def delete_blog(request,blog_id):
+def delete(request,blog_id):
      
     blog_id=int(blog_id)
     try:
@@ -50,10 +50,4 @@ def delete_blog(request,blog_id):
     return redirect('gallery/index.html')
 
 def about(request):
-    return render('about.html ')
-
-def catergory(request):
-    return render('category.html ')
-
-def location(request):
-    return render('location.html ')
+    return render(request, 'about.html')
