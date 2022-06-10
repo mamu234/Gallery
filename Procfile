@@ -1,2 +1,2 @@
-web: gunicorn inventory.wsgi:gallery
+web: gunicorn gallery.wsgi
 
