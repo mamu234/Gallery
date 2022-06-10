@@ -3,9 +3,9 @@
 {% block content %}
 
 
-        {% for photo  in photos %}
-        <h2>{{pic.title}} </h2>
-            <img src="{{pic.image.url}}" height="50%" width="50%" style="float: left;" margin="10px"  >
+        {% for photo in photos %}
+        <h2>{{photo.title}} </h2>
+            <img src="{{photo.image.url}}" height="50%" width="50%" style="float: left;" margin="10px"  >
             
         {% endfor %}
 
