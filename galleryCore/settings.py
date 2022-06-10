@@ -32,9 +32,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SECRET_KEY = ('django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9*')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost']
 
 
 cloudinary.config( 
