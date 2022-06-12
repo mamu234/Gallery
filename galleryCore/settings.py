@@ -16,8 +16,12 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from dotenv import load_dotenv
 import django_heroku
 
+
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +42,7 @@ SECRET_KEY = ('django-insecure-v(jp^*myc!)+pc2a2%a^z(woju33@wlj_q*swwc_2s*ftd2+9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = []
 
 
 
@@ -97,7 +101,7 @@ WSGI_APPLICATION = 'galleryCore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgressql.pycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME':('gallerycore'),
         'USER': ('carolyne'),
         'PASSWORD':('123'),
@@ -157,12 +161,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-cloudinary.config(
-    cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'),
-    api_key = os.getenv('CLOUDINARY_API_KEY'),
-    api_secret = os.getenv("CLOUDINARY_API_SECRET"),
-    secure = True 
+
+cloudinary.config( 
+  cloud_name = "dgwsgoxjd", 
+  api_key =  "269319899829333", 
+  api_secret = "Ge8SNu-60CxUS9Nefa68cwGVrlw", 
 )
+
+
 
 django_heroku.settings(locals())
 # Default primary key field type

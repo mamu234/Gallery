@@ -2,17 +2,14 @@ from django.shortcuts import render,redirect
 from .models import Category, Photos
 from .forms import CategoryCreate
 from django.http import HttpRequest, HttpResponse
+from .models import Photos
 
 # Create your views here.
 
-def index(request):
+def home(request):
     photo = Photos.objects.all()
-   
-    
     ctx = {'photo':photo}
-    
-   
-    return render(request, 'index.html', ctx)
+    return render(request,'index.html', ctx)
 
        
 def upload(request):
