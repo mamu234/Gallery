@@ -19,7 +19,8 @@ View the complete site here
 - Postgressql
 - Heroku
 
-## Django Framework
+## Django Framework![Screenshot from 2022-06-12 15-45-38](https://user-images.githubusercontent.com/78535921/173234004-457165e6-a4e1-43f0-b378-7914c3f80425.png)
+
 Python3.6
 Postgres
 Python virtualenv
