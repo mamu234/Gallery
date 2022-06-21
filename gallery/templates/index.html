@@ -1,10 +1,10 @@
 {%extends 'base.html'%}
 {% load static%}
 {% block content %}
-        {% if photo %}
+       
         {% for pic in photo %}
         <h2>{{pic.title}}</h2>
             <img src="{{pic.image.url}}"height="50%" width="50%" style="float: left;" margin="10px" alt="fish">
         {% endfor %}
-         {% endif %}
+         
 {% endblock %}
