@@ -53,3 +53,6 @@ def category(request):
     return render(request, 'category.html')
 def location(request):
     return render(request, 'location.html')
+
+
+    # heroku pg:push gallerycore DATABASE_URL --app gallery-apps

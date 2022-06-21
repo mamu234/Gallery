@@ -43,7 +43,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gallery-apps.herokuapp.com']
+ALLOWED_HOSTS = ['gallery-apps.herokuapp.com','127.0.0.1']
 
 
 
@@ -103,12 +103,13 @@ WSGI_APPLICATION = 'galleryCore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':('gallerycore'),
-        'USER': ('carolyne'),
-        'PASSWORD':('123'),
+        'NAME':'gallerycore',
+        'USER': 'carolyne',
+        'PASSWORD':'123',
         
     }
 }
+
 
 
 # Password validation
